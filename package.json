@@ -12,7 +12,7 @@
     "json"
   ],
   "author": "Gbenga Oshinaga",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
