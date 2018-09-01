@@ -1,6 +1,6 @@
 {
   "name": "json-response-handler",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Express middleware for sending and handling json responses",
   "main": "index.js",
   "scripts": {

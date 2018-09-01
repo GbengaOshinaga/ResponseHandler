@@ -18,9 +18,12 @@ app.get('/', () => {
 });
 
 // Examples
-res.successResponse({ message: 'Fetched successfully', name: 'James' }); // { 'status': 'success', 'message': 'Fetched successfully', 'data': { 'name': 'James' } }
+// successResponse accepts a status code as optional second argument - default is 200
+res.successResponse({ message: 'Fetched successfully', name: 'James' }, 201); // { 'status': 'success', 'message': 'Fetched successfully', 'data': { 'name': 'James' } }
 
 res.errorResponse(); // { 'status': 'error', 'message': 'An error occurred' }
-res.errorResponse('Fetch failed'); // { 'status': 'error', 'message': 'Fetch failed' }
+
+//errorResponse also accepts status code as optional second argument - default is 400
+res.errorResponse('Fetch failed', 404); // { 'status': 'error', 'message': 'Fetch failed' }
 res.errorResponse({ message: 'Failed', code: 123 }); // { 'status': 'error', 'message': 'Failed', 'code': 123 }
 ```
