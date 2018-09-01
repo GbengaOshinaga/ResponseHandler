@@ -3,15 +3,15 @@ ResponseHandler is an express middleware for sending json responses.
 
 ### Installation and Usage
 ```
-npm install --save responsehandler
+npm install --save json-response-handler
 ```
 
 ```
 import express from 'express';
-import handler from 'responsehandler';
+import responseHandler from 'json-response-handler';
 
 const app = express();
-app.use(handler.responseHandler);
+app.use(responseHandler);
 
 app.get('/', () => {
   return res.successResponse('Hello World!'); // { 'status': 'success', 'message': 'Hello World!' }

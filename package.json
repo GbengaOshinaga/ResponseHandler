@@ -1,5 +1,5 @@
 {
-  "name": "responsehandler",
+  "name": "json-response-handler",
   "version": "1.0.0",
   "description": "Express middleware for sending and handling json responses",
   "main": "index.js",
