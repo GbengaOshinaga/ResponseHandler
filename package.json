@@ -1,11 +1,15 @@
 {
   "name": "json-response-handler",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Express middleware for sending and handling json responses",
   "main": "index.js",
   "scripts": {
     "test": "mocha --require babel-core/register",
     "build": "babel -d build src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GbengaOshinaga/ResponseHandler.git"
   },
   "keywords": [
     "middleware",
@@ -13,6 +17,10 @@
   ],
   "author": "Gbenga Oshinaga",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GbengaOshinaga/ResponseHandler/issues"
+  },
+  "homepage": "https://github.com/GbengaOshinaga/ResponseHandler#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
