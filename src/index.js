@@ -4,23 +4,24 @@
  */
 export class ResponseHandler {
   /**
-     * Method for handling success responses
-     * @param {object} data
+     * Handles success or fail responses
+     * @param {String | Object} param
+     * @param {String} status - success or fail
      */
-  static success(data) {
-    if (!data) {
-      throw new Error('"data" cannot be undefined or null (ResponseHandler)');
+  static successOrFail(param, status) {
+    if (!param) {
+      throw new Error('Method parameter cannot be undefined or null (ResponseHandler)');
     }
 
-    const response = { status: 'success' };
+    let data = param;
+
+    const response = { status };
 
     if (data.message) {
       response.message = data.message;
-      // eslint-disable-next-line
       delete data.message;
     } else if (typeof data === 'string') {
       response.message = data;
-      // eslint-disable-next-line
       data = {};
     }
 
@@ -34,7 +35,7 @@ export class ResponseHandler {
   }
 
   /**
-     * Method for handling error responses
+     * Handles error responses
      * @param {any} error
      */
   static error(error) {
@@ -53,9 +54,13 @@ export class ResponseHandler {
 export default (req, res, next) => {
   res.successResponse = (data, statusCode = 200) => res
     .status(statusCode)
-    .json(ResponseHandler.success(data));
+    .json(ResponseHandler.successOrFail(data, 'success'));
 
-  res.errorResponse = (error, statusCode = 400) => res
+  res.failResponse = (data, statusCode = 400) => res
+    .status(statusCode)
+    .json(ResponseHandler.successOrFail(data, 'fail'));
+
+  res.errorResponse = (error, statusCode = 500) => res
     .status(statusCode)
     .json(ResponseHandler.error(error));
 

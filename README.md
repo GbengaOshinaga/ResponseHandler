@@ -1,5 +1,5 @@
 ## ResponseHandler
-ResponseHandler is an express middleware for sending json responses.
+ResponseHandler is a simple express middleware for sending json responses.
 
 ### Installation and Usage
 ```
@@ -21,9 +21,13 @@ app.get('/', () => {
 // successResponse accepts a status code as optional second argument - default is 200
 res.successResponse({ message: 'Fetched successfully', name: 'James' }, 201); // { 'status': 'success', 'message': 'Fetched successfully', 'data': { 'name': 'James' } }
 
+// failResponse accepts a status code as optional second argument - default is 400
+res.failResponse('Bad request') // { 'status': 'fail', 'message': 'Bad request' }
+res.failResponse({ message: 'Bad request', code: 123 }) // { 'status': 'fail', 'message': 'Bad request', code: 123 }
+
 res.errorResponse(); // { 'status': 'error', 'message': 'An error occurred' }
 
-//errorResponse also accepts status code as optional second argument - default is 400
+// errorResponse also accepts status code as optional second argument - default is now 500
 res.errorResponse('Fetch failed', 404); // { 'status': 'error', 'message': 'Fetch failed' }
 res.errorResponse({ message: 'Failed', code: 123 }); // { 'status': 'error', 'message': 'Failed', 'code': 123 }
 ```

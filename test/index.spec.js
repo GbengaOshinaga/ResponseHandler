@@ -6,18 +6,35 @@ const { expect } = chai;
 describe('ResponseHandler', () => {
   describe('#success', () => {
     it('should return data in appropriate format', () => {
-      const response = ResponseHandler.success({
+      const response = ResponseHandler.successOrFail({
         message: 'Successful',
         name: 'success',
-      });
+      }, 'success');
       expect(response.status).to.equal('success');
       expect(response.message).to.equal('Successful');
       expect(response.data.name).to.equal('success');
     });
     it('should return object when string is passed', () => {
-      const response = ResponseHandler.success('Your request was successful');
+      const response = ResponseHandler.successOrFail('Your request was successful', 'success');
       expect(response).to.be.an('object');
       expect(response.message).to.equal('Your request was successful');
+    });
+  });
+
+  describe('#fail', () => {
+    it('should return data in appropriate format', () => {
+      const response = ResponseHandler.successOrFail({
+        message: 'Failed to accomplish task',
+        name: 'failure',
+      }, 'fail');
+      expect(response.status).to.equal('fail');
+      expect(response.message).to.equal('Failed to accomplish task');
+      expect(response.data.name).to.equal('failure');
+    });
+    it('should return object when string is passed', () => {
+      const response = ResponseHandler.successOrFail('Your request failed', 'fail');
+      expect(response).to.be.an('object');
+      expect(response.message).to.equal('Your request failed');
     });
   });
 
